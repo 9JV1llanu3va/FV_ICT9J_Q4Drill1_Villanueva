@@ -3,34 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q4Practice1</title>
-</head>
-<body>
-    <h1>JavaScript Conditional Statements</h1>
-    
-    <h2>Check Age Classification</h2>
-    <br>
-    <button class="btn btn-info" onclick="checkAge()">Check Age </button>
-
-    <script>
-        function checkAge(){
-            var age = 17;
-            if (isNaN(age) || age < 0) {
-                alert("Please input a valid number.");
-            }
-              else if (age<18){
-                alert("You are underage.") 
-            }
-
-            else if (age>=18){
-                alert("You are of legal age.")
-            } 
-            else {
-                alert ("Age could not be classified");
-            }
-            
+    <title>Q4Drill1</title>
+    <style>
+         body { background-color: #d8d8c0; padding-top: 100px; }
+        
+        .classifier-bar {
+            background-color: #212529;
+            border-radius: 20px;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        </script>
+        .logo-placeholder { width: 60px; height: 60px; }
+        
+        .label-kwh {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: serif;
+        }
+
+        .input-box {
+            flex-grow: 1;
+            border-radius: 5px;
+            border: none;
+            height: 45px;
+            padding: 0 15px;
+        }
+
+        .btn-yellow {
+            background-color: #ffc107;
+            border-radius: 10px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            line-height: 1.2;
+        }
+
+        #error-msg {
+            color: #dc3545;
+            font-style: italic;
+            font-size: 0.9rem;
+            width: 100px;
+        }
+
+        </style>
+</head>
+<body>
+    <center>
+    <h1>JavaScript Conditional Statements</h1>
+    
+    <h2>Electricity Consumption Classified</h2>
+    <br>
+    </center>
+
+  <div class="classifier-bar shadow">
+       
+        
+    
+        <span class="label-kwh">kWh</span>
+   
+        <input type="number" id="kwhInput" class="input-box" placeholder="Input kilowatt per hour? And not must be within the negative range.">
+        
+     
+        <button onclick="checkConsumption()" class="btn-yellow">
+            Consumption<br>Classification
+        </button>
+
+    <script>
+     
+    
+    function checkConsumption() {
+      
+        let inputVal = document.getElementById("kwhInput").value;
+
+        let kwh = Number(inputVal);
+        let category = "";
+            let text = "";
+
+        if (kwh === "" || kwh < 0) {
+            alert("Please assign a valid number.")
+        } 
+       
+
+        
+    
+
+
+            if (kwh <= 100) {
+                category = "Lifeline Consumer";
+                text = "Discounted electricity rates";
+                 alert(category + text)
+            } else if (kwh <= 200) {
+                category = "Low Consumption";
+                text = "Normal residential rate";
+                 alert(category + text)
+            } else if (kwh <= 300) {
+                category = "Average Consumption";
+                text = "Typical electricity usage";
+                alert(category + text)
+            } else if (kwh <= 500) {
+                category = "High Consumption";
+                text = "Higher electricity usage";
+                 alert(category + text)
+            } else {
+                category = "Very High Consumption";
+                text = "Heavy electricity users";
+                alert(category + "text")
+            }
+
+       
+    }
+</script>
+
 </body>
 </html>
